@@ -18,7 +18,8 @@ fibonacci:
         subs r4, r0, #0
         @ if(R0 <= 0) goto .L3 (which returns 0)
         ble .L3
-        
+
+       	@do fib(1)=1
 	@ Compare R4 wtih 1
         cmp R4, #1
         @ If R4 == 1 goto .L4 (which returns 1)
@@ -35,6 +36,7 @@ fibonacci:
         sub r0, r4, #2
         @ Recursive call to fibonacci with R4 - 2 as parameter
         bl fibonacci
+        
         @ R0 = R5 + R0 (update flags)
         adds r0, r5, r0
         pop {r3, r4, r5, pc}            @EPILOG
